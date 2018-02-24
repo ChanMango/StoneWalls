@@ -74,8 +74,5 @@ public class UserAction {
 		}
 		return "index";
 	}
-	public void testWay(){
-		system.out.println("ss");
-	}
 
 }
