@@ -59,7 +59,7 @@
 	line-height: 50px;
 	letter-spacing: 0.25em;
 	text-transform: uppercase;
-}
+	}
 </style>
 <body id="top">
 	<jsp:include page="nav_plugin.jsp"></jsp:include>
