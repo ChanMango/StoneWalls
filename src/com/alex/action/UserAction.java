@@ -40,7 +40,7 @@ public class UserAction {
 
 	/**
 	 * 管理注册的action
-	 * 
+	 *
 	 * @param model
 	 * @param user
 	 * @param session
@@ -60,7 +60,7 @@ public class UserAction {
 
 	/**
 	 * 退出登录的action
-	 * 
+	 *
 	 * @param session
 	 * @param sessionStatus
 	 * @return
@@ -73,6 +73,9 @@ public class UserAction {
 			sessionStatus.setComplete();
 		}
 		return "index";
+	}
+	public void testWay(){
+		system.out.println("ss");
 	}
 
 }
