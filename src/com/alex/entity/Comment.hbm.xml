@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-2-1 14:22:12 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.alex.entity.Comment" table="COMMENT">
+        <id name="cid" type="int">
+            <column name="CID" />
+            <generator class="native" />
+        </id>
+        <many-to-one name="spokesman" class="com.alex.entity.UserInfo"   cascade="save-update">
+            <column name="SPOKESMAN" />
+        </many-to-one>
+        <many-to-one name="targetman" class="com.alex.entity.UserInfo"   cascade="save-update">
+            <column name="TARGETMAN" />
+        </many-to-one>
+        <property name="content" type="text">
+            <column name="CONTENT" />
+        </property>
+        <property name="spoketime" type="long">
+            <column name="SPOKETIME" />
+        </property>
+        <property name="supportNumber" type="int">
+            <column name="SUPPORTNUMBER" />
+        </property>
+        <many-to-one name="post" class="com.alex.entity.Posts"  cascade="save-update" >
+             <!-- column标签指定关联外键，会建立一个新的字段 post还是子表的外键列名 -->
+             <!-- 一般多的一方维护关系 生成这个外键 -->
+            <column name="POST" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
