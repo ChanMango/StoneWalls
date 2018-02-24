@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-2-1 14:22:12 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+	<class name="com.alex.entity.Image" table="IMAGE">
+		<id name="id" type="int">
+			<column name="IID" />
+			<generator class="native" />
+		</id>
+		<property name="imageName" type="java.lang.String">
+			<column name="IMAGENAME" />
+		</property>
+		<property name="uploadTime" type="java.lang.Long">
+			<column name="UPLOADTIME" />
+		</property>
+		<many-to-one name="post" class="com.alex.entity.Posts"
+			cascade="save-update" >
+			<column name="POSTS" />
+		</many-to-one>
+		<many-to-one name="beLong" class="com.alex.entity.UserInfo"
+			cascade="save-update" >
+			<column name="BELONG"></column>
+		</many-to-one>
+		<property name="orderSuq" type="int">
+			<column name="ORDERSUQ" />
+		</property>
+		<property name="targetType" type="int">
+			<column name="TARGETTYPE"></column>
+		</property>
+		<property name="imagePath" type="java.lang.String">
+			<column name="IMAGEPATH" />
+		</property>
+		<property name="imageDescribetion" type="java.lang.String"
+			length="10000">
+			<column name="IMAGEDESCRIBETION" />
+		</property>
+	</class>
+</hibernate-mapping>
