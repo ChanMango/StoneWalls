@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-2-1 14:22:12 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+	<class name="com.alex.entity.Posts" table="POSTS">
+		<id name="pid" type="int">
+			<column name="PID" />
+			<generator class="native" />
+		</id>
+		<property name="title" type="text">
+			<column name="TITLE" />
+		</property>
+		<property name="con_top" type="text">
+			<column name="CON_TOP" />
+		</property>
+		<property name="con_center" type="text">
+			<column name="CON_CENTER" />
+		</property>
+		<property name="con_buttom" type="text">
+			<column name="CON_BUTTOM" />
+		</property>
+		<list name="images" inverse="false" cascade="all" table="IMAGE"
+			lazy="true">
+			<key>
+				<column name="POSTS" />
+			</key>
+			<list-index>
+				<column name="p_iindex"></column>
+			</list-index>
+			<one-to-many class="com.alex.entity.Image" />
+		</list>
+		<many-to-one name="author" cascade="save-update" column="AUTHOR"
+			class="com.alex.entity.UserInfo" lazy="proxy">
+		</many-to-one>
+		<!-- <many-to-one name="collectors" cascade="save-update" class="com.alex.entity.UserInfo"> 
+			<column name="COLLECTORS"></column> </many-to-one> -->
+		<set name="collectors" inverse="true" cascade="save-update" lazy="true"
+			table="USERINFO_POST">
+			<key>
+				<column name="COLLECTORID"></column>
+			</key>
+			<many-to-many class="com.alex.entity.UserInfo" column="LOVEPOSTID"></many-to-many>
+		</set>
+		<property name="publishTime" type="long">
+			<column name="PUBLISHTIME" />
+		</property>
+		<property name="likeCounts" type="int">
+			<column name="LIKECOUNTS" />
+		</property>
+		<property name="dislikeCounts" type="int">
+			<column name="DISLIKECOUNTS" />
+		</property>
+		<property name="readeCounts" type="int">
+			<column name="READECOUNTS" />
+		</property>
+		<many-to-one name="topic" class="com.alex.entity.Topics"
+			lazy="proxy" cascade="save-update">
+			<column name="TOPIC" />
+		</many-to-one>
+		<set name="comments" inverse="false" cascade="all" table="COMMENT"
+			lazy="true" fetch="select">
+			<key>
+				<!-- key配置的是子表的外键列名 -->
+				<column name="POST" />
+			</key>
+			<one-to-many class="com.alex.entity.Comment" />
+		</set>
+	</class>
+</hibernate-mapping>

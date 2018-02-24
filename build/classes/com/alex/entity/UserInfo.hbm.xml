@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-2-1 14:22:12 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+	<class name="com.alex.entity.UserInfo" table="USERINFO">
+		<id name="id" type="int">
+			<column name="UIID" />
+			<generator class="native" />
+		</id>
+		<!-- 一对一外键映射 -->
+		<many-to-one name="user" cascade="save-update" unique="true"
+			class="com.alex.entity.User">
+			<column name="USER"></column>
+		</many-to-one>
+		<property name="age" type="int">
+			<column name="AGE" />
+		</property>
+		<property name="brithday" type="long">
+			<column name="BRITHDAY" />
+		</property>
+		<property name="signature" type="text">
+			<column name="SIGNATURE" />
+		</property>
+		<property name="intro" type="text">
+			<column name="INTRO" />
+		</property>
+		<property name="sex" type="java.lang.String">
+			<column name="SEX" />
+		</property>
+		<property name="txpic" type="java.lang.String">
+			<column name="TXPIC" />
+		</property>
+		<property name="address" type="java.lang.String">
+			<column name="ADDRESS" />
+		</property>
+		<property name="job" type="java.lang.String">
+			<column name="JOB" />
+		</property>
+		<property name="email" type="java.lang.String">
+			<column name="EMAIL" />
+		</property>
+		<set name="love_posts" inverse="false" lazy="true" fetch="select"
+			table="USERINFO_POST" cascade="all">
+			<key>
+				<column name="LOVEPOSTID"></column>
+			</key>
+			<many-to-many class="com.alex.entity.Posts" column="COLLECTORID" />
+		</set>
+		<set name="posts" inverse="true" cascade="all">
+			<key>
+				<column name="AUTHOR"></column>
+			</key>
+			<one-to-many class="com.alex.entity.Posts"></one-to-many>
+		</set>
+
+		<set name="images" inverse="false" lazy="true" fetch="select"
+			cascade="all">
+			<key>
+				<column name="BELONG" />
+			</key>
+			<one-to-many class="com.alex.entity.Image" />
+		</set>
+
+
+		<set name="lovers" inverse="false" table="LOVES_FANS" lazy="true">
+			<key>
+				<column name="LOVERSID" />
+			</key>
+			<many-to-many class="com.alex.entity.UserInfo" column="FANSID" />
+		</set>
+
+		<set name="fans" table="LOVES_FANS" inverse="true" lazy="true">
+			<key>
+				<column name="FANSID" />
+			</key>
+			<many-to-many class="com.alex.entity.UserInfo" column="LOVERSID"></many-to-many>
+		</set>
+		<set name="recComments" inverse="true" cascade="all" lazy="true"
+			fetch="select">
+			<key>
+				<column name="TARGETMAN" />
+			</key>
+			<one-to-many class="com.alex.entity.Comment" />
+		</set>
+		<set name="sendComments" inverse="true" cascade="all" lazy="true"
+			fetch="select">
+			<key>
+				<column name="SPOKESMAN" />
+			</key>
+			<one-to-many class="com.alex.entity.Comment" />
+		</set>
+	</class>
+</hibernate-mapping>

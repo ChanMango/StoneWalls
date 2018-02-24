@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-2-1 14:33:48 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+	<class name="com.alex.entity.User" table="USER">
+		<id name="id" type="int">
+			<column name="UID" />
+			<generator class="native" />
+		</id>
+		<one-to-one name="userInfo" class="com.alex.entity.UserInfo"
+			cascade="all" lazy="proxy" property-ref="user" ></one-to-one>
+		<property name="uname" type="java.lang.String">
+			<column name="UNAME" />
+		</property>
+		<property name="uniqueId" type="java.lang.String">
+			<column name="UNIQUEID" />
+		</property>
+		<property name="upassword" type="java.lang.String">
+			<column name="UPASSWORD" />
+		</property>
+		<property name="telphone" type="java.lang.String">
+			<column name="TELPHONE" />
+		</property>
+		<property name="signTime" type="long">
+			<column name="SIGNTIME" />
+		</property>
+	</class>
+</hibernate-mapping>
