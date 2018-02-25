@@ -81,6 +81,10 @@ pre {
 .entry-desc p {
 	margin-bottom: 10px !important;
 }
+article{
+    background-color: white;
+    padding: 0px 20px;
+}
 </style>
 <body>
 	<!-- 将long形的时间转换格式 -->
