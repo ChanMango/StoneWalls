@@ -82,8 +82,8 @@ pre {
 	margin-bottom: 10px !important;
 }
 article{
-background: white;
-padding: 20px;
+    background-color: white;
+    padding: 0px 20px;
 }
 </style>
 <body>
