@@ -66,8 +66,7 @@
 	function acceptMessage() {
 		 //创建 websocket
 		 //服务器应该有一个接受WebSocket连接的端点  否则握手会失败
-       // var url = 'ws://'+ window.location.host + '<%=request.getContextPath()%>
-	/msg';
+       // var url = 'ws://'+ window.location.host + '<%=request.getContextPath()%>	/msg';
 		//var sock = new WebSocket(url);
 		//websocket 连接行为
 		//sock.onopen = function() {
